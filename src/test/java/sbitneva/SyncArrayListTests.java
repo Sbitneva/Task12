@@ -47,8 +47,8 @@ public class SyncArrayListTests {
             }
         });
 
-        thread1.run();
-        thread2.run();
+        thread1.start();
+        thread2.start();
 
         try {
             thread1.join();
@@ -76,8 +76,8 @@ public class SyncArrayListTests {
             }
         });
 
-        thread1.run();
-        thread2.run();
+        thread1.start();
+        thread2.start();
 
         try {
             thread1.join();
@@ -106,8 +106,8 @@ public class SyncArrayListTests {
             }
         });
 
-        thread1.run();
-        thread2.run();
+        thread1.start();
+        thread2.start();
 
         try {
             thread1.join();
@@ -133,8 +133,8 @@ public class SyncArrayListTests {
             }
         });
 
-        thread1.run();
-        thread2.run();
+        thread1.start();
+        thread2.start();
 
         try {
             thread1.join();
@@ -161,8 +161,8 @@ public class SyncArrayListTests {
             }
         });
 
-        thread1.run();
-        thread2.run();
+        thread1.start();
+        thread2.start();
 
         try {
             thread1.join();
@@ -197,8 +197,8 @@ public class SyncArrayListTests {
             }
         });
 
-        thread1.run();
-        thread2.run();
+        thread1.start();
+        thread2.start();
 
         try {
             thread1.join();
@@ -206,6 +206,39 @@ public class SyncArrayListTests {
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    public void getTest() {
+        thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                assertEquals(syncArrayList.get(0), new Integer(1));
+                syncArrayList.remove(0);
+
+
+            }
+        });
+        thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                assertEquals(syncArrayList.get(0), new Integer(2));
+                syncArrayList.remove(0);
+            }
+        });
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+
+        assertEquals(syncArrayList.size(), 4);
     }
 
 }
