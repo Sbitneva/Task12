@@ -10,7 +10,6 @@ cache:
 
 install: true
 script:
-  - cd SynchronizedList
   - mvn clean install
 
 after_success:
@@ -19,3 +18,4 @@ after_success:
 branches:
   only:
     - master
+    - dev
