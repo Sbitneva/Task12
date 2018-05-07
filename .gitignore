@@ -1,0 +1,10 @@
+.idea/
+target/
+.m2/
+memory:*
+checkstyle-*
+*.class
+*.iml
+*.log*
+*.dat
+*.db-journal
